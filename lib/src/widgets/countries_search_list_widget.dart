@@ -12,6 +12,10 @@ class CountrySearchListWidget extends StatefulWidget {
   final bool autoFocus;
   final bool? showFlags;
   final bool? useEmoji;
+  final TextStyle? selectorSearchTextFieldTextStyle;
+  final TextStyle? selectorSearchTextFieldLabelStyle;
+  final TextStyle? countryNameTextStyle;
+  final TextStyle? countryDialCodeTextStyle;
 
   CountrySearchListWidget(
     this.countries,
@@ -20,6 +24,10 @@ class CountrySearchListWidget extends StatefulWidget {
     this.scrollController,
     this.showFlags,
     this.useEmoji,
+    this.selectorSearchTextFieldTextStyle,
+    this.selectorSearchTextFieldLabelStyle,
+    required this.countryDialCodeTextStyle,
+    this.countryNameTextStyle,
     this.autoFocus = false,
   });
 
@@ -52,7 +60,9 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
   /// Returns [InputDecoration] of the search box
   InputDecoration getSearchBoxDecoration() {
     return widget.searchBoxDecoration ??
-        InputDecoration(labelText: 'Search by country name or dial code');
+        InputDecoration(
+            labelText: 'Search by country name or dial code',
+            labelStyle: widget.selectorSearchTextFieldLabelStyle);
   }
 
   @override
@@ -67,6 +77,7 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
             decoration: getSearchBoxDecoration(),
             controller: _searchController,
             autofocus: widget.autoFocus,
+            style: widget.selectorSearchTextFieldTextStyle,
             onChanged: (value) {
               final String value = _searchController.text.trim();
               return setState(
@@ -92,6 +103,8 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
                 locale: widget.locale,
                 showFlags: widget.showFlags!,
                 useEmoji: widget.useEmoji!,
+                countryNameTextStyle: widget.countryNameTextStyle,
+                countryDialCodeTextStyle: widget.countryDialCodeTextStyle,
               );
               // return ListTile(
               //   key: Key(TestHelper.countryItemKeyValue(country.alpha2Code)),
@@ -136,9 +149,13 @@ class DirectionalCountryListTile extends StatelessWidget {
   final String? locale;
   final bool showFlags;
   final bool useEmoji;
+  final TextStyle? countryNameTextStyle;
+  final TextStyle? countryDialCodeTextStyle;
 
   const DirectionalCountryListTile({
     Key? key,
+    required this.countryNameTextStyle,
+    required this.countryDialCodeTextStyle,
     required this.country,
     required this.locale,
     required this.showFlags,
@@ -154,6 +171,7 @@ class DirectionalCountryListTile extends StatelessWidget {
         alignment: AlignmentDirectional.centerStart,
         child: Text(
           '${Utils.getCountryName(country, locale)}',
+          style: countryNameTextStyle,
           textDirection: Directionality.of(context),
           textAlign: TextAlign.start,
         ),
@@ -162,6 +180,7 @@ class DirectionalCountryListTile extends StatelessWidget {
         alignment: AlignmentDirectional.centerStart,
         child: Text(
           '${country.dialCode ?? ''}',
+          style: countryDialCodeTextStyle,
           textDirection: TextDirection.ltr,
           textAlign: TextAlign.start,
         ),

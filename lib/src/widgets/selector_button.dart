@@ -17,6 +17,10 @@ class SelectorButton extends StatelessWidget {
   final String? locale;
   final bool isEnabled;
   final bool isScrollControlled;
+  final TextStyle? selectorSearchTextFieldTextStyle;
+  final TextStyle? selectorSearchTextFieldLabelStyle;
+  final TextStyle? countryNameTextStyle;
+  final TextStyle? countryDialCodeTextStyle;
 
   final ValueChanged<Country?> onCountryChanged;
 
@@ -32,6 +36,10 @@ class SelectorButton extends StatelessWidget {
     required this.onCountryChanged,
     required this.isEnabled,
     required this.isScrollControlled,
+    required this.selectorSearchTextFieldTextStyle,
+    required this.selectorSearchTextFieldLabelStyle,
+    required this.countryDialCodeTextStyle,
+    required this.countryNameTextStyle,
   }) : super(key: key);
 
   @override
@@ -134,6 +142,12 @@ class SelectorButton extends StatelessWidget {
               showFlags: selectorConfig.showFlags,
               useEmoji: selectorConfig.useEmoji,
               autoFocus: autoFocusSearchField,
+              selectorSearchTextFieldTextStyle:
+                  selectorSearchTextFieldTextStyle,
+              selectorSearchTextFieldLabelStyle:
+                  selectorSearchTextFieldLabelStyle,
+              countryNameTextStyle: countryNameTextStyle,
+              countryDialCodeTextStyle: countryDialCodeTextStyle,
             ),
           ),
         ),
@@ -182,6 +196,12 @@ class SelectorButton extends StatelessWidget {
                       showFlags: selectorConfig.showFlags,
                       useEmoji: selectorConfig.useEmoji,
                       autoFocus: autoFocusSearchField,
+                      selectorSearchTextFieldTextStyle:
+                          selectorSearchTextFieldTextStyle,
+                      selectorSearchTextFieldLabelStyle:
+                          selectorSearchTextFieldLabelStyle,
+                      countryNameTextStyle: countryNameTextStyle,
+                      countryDialCodeTextStyle: countryDialCodeTextStyle,
                     ),
                   ),
                 );
