@@ -90,6 +90,7 @@ class InternationalPhoneNumberInput extends StatefulWidget {
   final TextStyle? selectorSearchTextFieldLabelStyle;
   final TextStyle? countryNameTextStyle;
   final TextStyle? countryDialCodeTextStyle;
+  final TextStyle? selectorDropDownItemTextStyle;
 
   InternationalPhoneNumberInput(
       {Key? key,
@@ -97,6 +98,7 @@ class InternationalPhoneNumberInput extends StatefulWidget {
       this.selectorSearchTextFieldTextStyle,
       this.selectorSearchTextFieldLabelStyle,
       this.countryDialCodeTextStyle,
+      this.selectorDropDownItemTextStyle,
       this.countryNameTextStyle,
       required this.onInputChanged,
       this.onInputValidated,
@@ -318,6 +320,7 @@ class _InputWidgetState extends State<InternationalPhoneNumberInput> {
             widget.selectorSearchTextFieldLabelStyle,
         countryDialCodeTextStyle: widget.countryDialCodeTextStyle,
         countryNameTextStyle: widget.countryNameTextStyle,
+        selectorDropDownItemTextStyle: widget.selectorDropDownItemTextStyle,
       ));
     }
 
@@ -431,6 +434,8 @@ class _InputWidgetView
                       widget.selectorSearchTextFieldLabelStyle,
                   countryDialCodeTextStyle: widget.countryDialCodeTextStyle,
                   countryNameTextStyle: widget.countryNameTextStyle,
+                  selectorDropDownItemTextStyle:
+                      widget.selectorDropDownItemTextStyle,
                 ),
                 SizedBox(
                   height: state.selectorButtonBottomPadding,

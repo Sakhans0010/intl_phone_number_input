@@ -21,6 +21,7 @@ class SelectorButton extends StatelessWidget {
   final TextStyle? selectorSearchTextFieldLabelStyle;
   final TextStyle? countryNameTextStyle;
   final TextStyle? countryDialCodeTextStyle;
+  final TextStyle? selectorDropDownItemTextStyle;
 
   final ValueChanged<Country?> onCountryChanged;
 
@@ -40,6 +41,7 @@ class SelectorButton extends StatelessWidget {
     required this.selectorSearchTextFieldLabelStyle,
     required this.countryDialCodeTextStyle,
     required this.countryNameTextStyle,
+    required this.selectorDropDownItemTextStyle,
   }) : super(key: key);
 
   @override
@@ -116,7 +118,7 @@ class SelectorButton extends StatelessWidget {
           country: country,
           showFlag: selectorConfig.showFlags,
           useEmoji: selectorConfig.useEmoji,
-          textStyle: selectorTextStyle,
+          textStyle: selectorDropDownItemTextStyle,
           withCountryNames: false,
           trailingSpace: selectorConfig.trailingSpace,
         ),
